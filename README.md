@@ -50,7 +50,7 @@ jackd
 install a working version of jackd for wheezy...
 
 * `sudo apt-get remove libjack-jackd2-0:armhf` #remove old libjack (wheezy only)
-* `sudo apt-get install libsamplerate0-dev libsndfile1-dev libreadline-dev`
+* `sudo apt-get install libasound2-dev libsamplerate0-dev libsndfile1-dev libreadline-dev`
 * `git clone git://github.com/jackaudio/jack2.git --depth 1`
 * `cd jack2`
 * `./waf configure --alsa`
@@ -61,7 +61,7 @@ install a working version of jackd for wheezy...
 and then do the following to configure jackd...
 
 * `sudo nano /etc/security/limits.conf` #and add the following two lines at the end
-* `@audio - memlock 256000`
-* `@audio - rtprio 75`
+  * `@audio - memlock 256000`
+  * `@audio - rtprio 75`
 * `sudo nano /etc/ssh/sshd_config` #at the bottom change to UsePAM yes
 * `sudo reboot` #and log in again to make the limits and sshd settings work
