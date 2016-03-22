@@ -15,18 +15,20 @@ installation
 open the terminal on the BBB and type...
 
 * `sudo apt-get update`
-* `sudo apt-get install libcwiid-dev libfftw3-dev`
+* `sudo apt-get install libqt5sensors5 libqt5positioning5 libcwiid-dev libfftw3-dev`
 * `git clone git://github.com/redFrik/supercolliderStandaloneBBB --depth 1`
 
 NOTE: also install a working jackd.  see below.
 
-NOTE: to avoid audio dropouts on the BBB make sure you are running at 1GHz. The following command will change the governor from *ondemand* to *performance*.
+NOTE: to avoid audio dropouts on the BBB under **Jessie** make sure you are running at 1GHz. The following command will change the governor from *ondemand* to *performance*.
 
 * `sudo cpufreq-set -g performance`
 
 and to make the change permanent run...
 
 * `echo 'GOVERNOR="performance"' | sudo tee /etc/default/cpufrequtils`
+
+Under Wheezy this does not seem to make any noticeable difference.
 
 startup
 --
@@ -57,6 +59,8 @@ install a working version of jackd for wheezy...
 * `./waf build`
 * `sudo ./waf install`
 * `sudo ldconfig`
+* `cd ../..`
+* `rm -rf jack2`
 
 and then do the following to configure jackd...
 
