@@ -3,7 +3,7 @@ Standalone SuperCollider for BeagleBone Black Debian.
 
 This is the audio synthesis program [SuperCollider](http://github.com/supercollider/supercollider) (3.7 branch) compiled for armv7l.
 
-It was built using [this guide](http://supercollider.github.io/development/building-beagleboneblack) on a **BeagleBone Black** under bone-debian-7.9-lxde-4gb-armhf-2015-11-12-4gb.img (Wheezy).
+It was built using [this guide](http://supercollider.github.io/development/building-beagleboneblack) on a **BeagleBone Black** under bone-debian-7.9-lxde-4gb-armhf-2015-11-12-4gb.img (Wheezy). But it also run under the newer Jessie.
 
 The standalone structure is loosely based on [Miguel Negrão's template](https://github.com/miguel-negrao/scStandalone). This standalone is self-contained and all files are in one directory.
 
@@ -15,8 +15,9 @@ installation
 open the terminal on the BBB and type...
 
 * `sudo apt-get update`
-* `sudo apt-get install libqt5sensors5 libqt5positioning5 libcwiid-dev libfftw3-dev`
-* `git clone git://github.com/redFrik/supercolliderStandaloneBBB --depth 1`
+* `sudo apt-get install libcwiid-dev libfftw3-dev libudev1`
+* `sudo ln -s /usr/lib/arm-linux-gnueabihf/libudev.so /usr/lib/arm-linux-gnueabihf/libudev.so.0` #hack (jessie only)
+* `git clone git://github.com/redFrik/supercolliderStandaloneBBBheadless --depth 1`
 
 NOTE: also install a working jackd.  see below.
 
