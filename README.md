@@ -15,7 +15,7 @@ installation
 open the terminal on the BBB and type...
 
 * `sudo apt-get update`
-* `sudo apt-get install libcwiid-dev libfftw3-dev libudev1`
+* `sudo apt-get install libcwiid-dev libfftw3-dev libudev-dev libudev1`
 * `sudo ln -s /usr/lib/arm-linux-gnueabihf/libudev.so /usr/lib/arm-linux-gnueabihf/libudev.so.0` #hack (jessie only)
 * `git clone git://github.com/redFrik/supercolliderStandaloneBBBheadless --depth 1`
 
@@ -29,7 +29,7 @@ and to make the change permanent run...
 
 * `echo 'GOVERNOR="performance"' | sudo tee /etc/default/cpufrequtils`
 
-Under Wheezy this does not seem to make any noticeable difference.
+Under **Wheezy** this does not seem to make any noticeable difference and *ondemand* works good.
 
 startup
 --
