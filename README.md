@@ -49,7 +49,7 @@ jackd
 
 install a working version of jackd for wheezy...
 
-* `sudo apt-get remove —auto-remove libjack-jackd2-0:armhf` #remove old libjack
+* `sudo apt-get remove libjack-jackd2-0:armhf` #remove old libjack (wheezy only)
 * `sudo apt-get install libsamplerate0-dev libsndfile1-dev libreadline-dev`
 * `git clone git://github.com/jackaudio/jack2.git --depth 1`
 * `cd jack2`
