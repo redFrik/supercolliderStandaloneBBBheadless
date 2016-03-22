@@ -15,11 +15,11 @@ installation
 open the terminal on the BBB and type...
 
 * `sudo apt-get update`
-* `sudo apt-get install libcwiid-dev libfftw3-dev libudev-dev libudev1`
+* `sudo apt-get install libcwiid-dev libfftw3-dev libudev-dev`
 * `sudo ln -s /usr/lib/arm-linux-gnueabihf/libudev.so /usr/lib/arm-linux-gnueabihf/libudev.so.0` #hack (jessie only)
 * `git clone git://github.com/redFrik/supercolliderStandaloneBBBheadless --depth 1`
 
-NOTE: also install a working jackd.  see below.
+NOTE: also install a working jackd. See [jackd](#jackd) below.
 
 NOTE: to avoid audio dropouts on the BBB under **Jessie** make sure you are running at 1GHz. The following command will change the governor from *ondemand* to *performance*.
 
@@ -30,6 +30,12 @@ and to make the change permanent run...
 * `echo 'GOVERNOR="performance"' | sudo tee /etc/default/cpufrequtils`
 
 Under **Wheezy** this does not seem to make any noticeable difference and *ondemand* works good.
+
+Also under **Jessie** sc will run smoother if you upgrade the kernel:
+
+* `cd /opt/scripts/tools/`
+* `git pull`
+* `sudo ./update_kernel.sh --ti-channel --lts-4_1`
 
 startup
 --
@@ -50,11 +56,11 @@ todo
 jackd
 --
 
-install a working version of jackd for wheezy...
+install a working version of jackd...
 
 * `sudo apt-get remove libjack-jackd2-0:armhf` #remove old libjack (wheezy only)
 * `sudo apt-get install libasound2-dev libsamplerate0-dev libsndfile1-dev libreadline-dev`
-* `git clone git://github.com/jackaudio/jack2.git --depth 1`
+* `git clone git://github.com/jackaudio/jack2 --depth 1`
 * `cd jack2`
 * `./waf configure --alsa`
 * `./waf build`
