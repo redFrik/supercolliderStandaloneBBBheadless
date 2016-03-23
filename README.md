@@ -54,9 +54,9 @@ autostart
 todo
 
 jackd
-==
+--
 
-install a working version of jackd by compiling it from source (wheesy and jessie)...
+install a working version of jackd by compiling it from source (**Wheezy** and **Jessie**)...
 
 * `sudo apt-get remove libjack-jackd2-0:armhf` #remove old libjack (wheezy only)
 * `sudo apt-get install libasound2-dev libsamplerate0-dev libsndfile1-dev libreadline-dev`
@@ -77,7 +77,7 @@ and then do the following to configure jackd...
 * `sudo nano /etc/ssh/sshd_config` #at the bottom change to UsePAM yes
 * `sudo reboot` #and log in again to make the limits and sshd settings work
 
-on **jessie** you can alternatively install it with...
+on **Jessie** you can alternatively install it with...
 
 * `sudo apt-get install jackd` #allow realtime when asked
 
