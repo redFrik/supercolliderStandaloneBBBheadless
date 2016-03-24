@@ -51,7 +51,11 @@ NOTE: one can also specify a .scd file to load when starting sclang like this: `
 autostart
 --
 
-todo
+* `sudo apt-get install xvfb`
+* `crontab -e` #and add the following line to the end
+* `@reboot cd /home/debian/supercolliderStandaloneBBBheadless && xvfb-run ./autostart.sh`
+
+Then edit the autostart script to load whichever file. By default it will load `mycode.scd`.
 
 jackd
 --
@@ -84,3 +88,17 @@ on **Jessie** you can alternatively install it with...
 but you still need to configure jackd like above and also type the following each time before starting jack...
 
 * `export DISPLAY=:0.0`
+
+console & iot
+--
+
+for the console and iot images found [here](http://elinux.org/Beagleboard:BeagleBoneBlack_Debian) you will need to install a few more things...
+
+* `sudo apt-get install git dbus-x11`
+
+and then to start jack and supercollider do...
+
+* `export DISPLAY=:0.0`
+* ``export `dbus-launch | grep ADDRESS` ``
+* ``export `dbus-launch | grep PID` ``
+* `jackd -P75 -dalsa -dhw:1 -p1024 -n3 -s -r 44100 &`
