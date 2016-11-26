@@ -116,7 +116,7 @@ Quarks {
 		dir = path.dirname;
 		lines = this.installed.collect({ |quark|
 			var localPath, url="", refspec;
-			localPath = this.asRelativePath(quark.localPath);
+			localPath = this.asRelativePath(quark.localPath, dir);
 			if(Git.isGit(quark.localPath), {
 				url = quark.url;
 				if(Git(quark.localPath).isDirty, {
@@ -141,9 +141,13 @@ Quarks {
 		// by quark name or by supplying a local path
 		// resolving / ~/ ./
 		// is it a git
-		var localPath = this.quarkNameAsLocalPath(name);
+		var quark, localPath;
+		if(name.isNil, {
+			("Missing required argument: quark name").throw;
+		});
+		localPath = this.quarkNameAsLocalPath(name);
 		if(Git.isGit(localPath), {
-			Git(localPath).pull;
+			Quark.fromLocalPath(localPath).update();
 		}, {
 			("Quark" + name + "was not installed using git, cannot update.").warn;
 		});
@@ -179,7 +183,7 @@ Quarks {
 			deps,
 			incompatible = { arg name;
 				(quark.name
-					+ "reports an incompatibility with this Super Collider version"
+					+ "reports an incompatibility with this SuperCollider version"
 					+ "or with other already installed quarks."
 				).inform;
 				false
@@ -248,7 +252,8 @@ Quarks {
 		}, {
 			regex = (
 				isPath: "\\\\|/",
-				isAbsolutePath: "^[A-Za-z]:\\\\"
+				isAbsolutePath: "^[A-Za-z]:\\\\",
+				isURL: "://"
 			);
 		});
 	}
@@ -302,7 +307,7 @@ Quarks {
 			(folder +/+ "*").pathMatch.do(f);
 		});
 		LanguageConfig.includePaths.do(f);
-		^all.values
+		^all.atAll(all.order)
 	}
 	*fetchDirectory { |force=true|
 		// will only pull every 15 minutes unless force is true
@@ -319,7 +324,7 @@ Quarks {
 			("Failed to read quarks directory listing: % %".format(if(fetch, directoryUrl, dirTxtPath), err)).error;
 			if(fetch, {
 				// if fetch failed, try read from cache
-				 if(File.exists(dirTxtPath), {
+				if(File.exists(dirTxtPath), {
 					this.prReadDirectoryFile(dirTxtPath);
 				});
 			}, {
@@ -384,7 +389,11 @@ Quarks {
 		});
 	}
 	*isPath { |string|
-		^string.findRegexp(regex.isPath).size != 0
+		if(thisProcess.platform.name !== 'windows', {
+			^string.findRegexp(regex.isPath).size != 0
+		}, {
+			^(string.findRegexp(regex.isPath).size != 0).and(string.findRegexp(regex.isURL).size == 0)
+		});
 	}
 	*asAbsolutePath { |path, relativeTo|
 		^if(path.findRegexp(regex.isAbsolutePath).size != 0, {
@@ -403,7 +412,7 @@ Quarks {
 	*asRelativePath { |path, relativeToDir|
 		var d;
 		if(path.beginsWith(relativeToDir), {
-			^"." ++ path.copyToEnd(relativeToDir)
+			^"." ++ path.copyToEnd(relativeToDir.size)
 		});
 		d = Platform.userHomeDir;
 		// ~/path if in home

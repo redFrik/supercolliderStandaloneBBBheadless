@@ -2,7 +2,7 @@
 
 Instructions for building these binaries and set up a similar standalone repository...
 
-First build and install SuperCollider 3.7 on a BBB (or other Linux box) following the instructions in the Wheezy section [here](http://supercollider.github.io/development/building-beagleboneblack). One can also use an existing sc install assuming all the files are in their default directories.
+First build and install SuperCollider on a BBB following the instructions [here](http://supercollider.github.io/development/building-beagleboneblack). One can also use an existing sc install assuming all the files are in their default directories.
 
 NOTE: also build jackd2 from git source and do not install it with apt-get (see README.md).
 
@@ -13,9 +13,10 @@ NOTE: also build jackd2 from git source and do not install it with apt-get (see 
 * `cp -r /usr/local/share/SuperCollider/* share/system` #copies help, classes, examples etc
 * `mkdir -p share/system/Extensions/SystemOverwrites`
 * `curl -o share/system/Extensions/SystemOverwrites/extLinuxPlatform.sc https://raw.githubusercontent.com/redFrik/supercolliderStandaloneBBBheadless/master/share/system/Extensions/SystemOverwrites/extLinuxPlatform.sc`
-* `mkdir share/users`
-* `curl -o share/users/archive.sctxar https://raw.githubusercontent.com/redFrik/supercolliderStandaloneBBBheadless/master/share/user/archive.sctxar`
+* `mkdir share/user`
+* `curl -o share/user/archive.sctxar https://raw.githubusercontent.com/redFrik/supercolliderStandaloneBBBheadless/master/share/user/archive.sctxar`
 * `curl -o sclang.yaml https://raw.githubusercontent.com/redFrik/supercolliderStandaloneBBBheadless/master/sclang.yaml`
+* `curl -o autostart.sh https://raw.githubusercontent.com/redFrik/supercolliderStandaloneBBBheadless/master/autostart.sh`
 
 Now this directory should contain what is needed to run sc standalone (if started as in the README.md). Copy it to another machine with the same system and try.
 
@@ -24,6 +25,7 @@ publish
 
 My own additional notes for this git repository...
 
+* note which git commit was used in README.md
 * note which debian image was used in README.md
 * copy the files over to laptop...
   * `cd supercolliderStandaloneBBBheadless`

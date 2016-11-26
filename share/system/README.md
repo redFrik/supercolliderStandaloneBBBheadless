@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/supercollider/supercollider.svg?branch=master)](https://travis-ci.org/supercollider/supercollider)
+
 Welcome to SuperCollider!
 =========================
 
@@ -23,7 +25,7 @@ Usage
 
 SuperCollider consists of three separate components:
 
-1. scsynth - audio engine (the "server")
+1. scsynth or supernova - audio engine (the "server")
 2. sclang - programming language runtime interpreter including Qt graphical user interfaces
 3. IDE (integrated development environment) - an editor for writing code and running supercollider
 
@@ -95,6 +97,7 @@ version. See [COPYING](COPYING) for the license text.
 - SuperCollider 3.4 was released on July 15, 2010
 - SuperCollider 3.5 was released on March 16, 2012
 - SuperCollider 3.6 was released on November 28, 2012
+- SuperCollider 3.7 was released on March 13, 2016
 
 Outro
 -----

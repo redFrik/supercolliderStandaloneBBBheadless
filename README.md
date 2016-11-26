@@ -1,9 +1,9 @@
 # supercolliderStandaloneBBBheadless
-Standalone SuperCollider for BeagleBone Black Debian.
+Standalone SuperCollider for BeagleBone Black Debian Jessie.
 
-This is the audio synthesis program [SuperCollider](http://github.com/supercollider/supercollider) (3.7 branch) compiled for armv7l.
+This is the audio synthesis program [SuperCollider](http://github.com/supercollider/supercollider) (3.8.0, commit 0947edd, 5nov2016) compiled for beaglebone black.
 
-It was built using [this guide](http://supercollider.github.io/development/building-beagleboneblack) on a **BeagleBone Black** under bone-debian-7.9-lxde-4gb-armhf-2015-11-12-4gb.img (Wheezy). But it also run under the newer Jessie.
+It was built using [this guide](http://supercollider.github.io/development/building-beagleboneblack) on a **BeagleBone Black** under bone-debian-8.6-iot-armhf-2016-11-06-4gb.img (Jessie). It will also run under the older Wheezy.
 
 The standalone structure is loosely based on [Miguel Negrão's template](https://github.com/miguel-negrao/scStandalone). This standalone is self-contained and all files are in one directory.
 
@@ -21,7 +21,7 @@ open the terminal on the BBB and type...
 
 NOTE: also install a working jackd. See [jackd](#jackd) below.
 
-NOTE: to avoid audio dropouts on the BBB under **Jessie** make sure you are running at 1GHz. The following command will change the governor from *ondemand* to *performance*.
+NOTE: to avoid audio dropouts on the BBB make sure you are running at 1GHz. The following command will change the governor from *ondemand* to *performance*.
 
 * `sudo cpufreq-set -g performance`
 
@@ -29,7 +29,7 @@ and to make the change permanent run...
 
 * `echo 'GOVERNOR="performance"' | sudo tee /etc/default/cpufrequtils`
 
-Under **Wheezy** this does not seem to make any noticeable difference and *ondemand* works good.
+also power the BBB from barrel jack or gpio pins - the mini usb port will cap the cpu at 300MHz.
 
 Also under **Jessie** sc will run smoother if you upgrade the kernel:
 
@@ -53,7 +53,7 @@ autostart
 
 * `sudo apt-get install xvfb`
 * `crontab -e` #and add the following line to the end
-* `@reboot cd /home/debian/supercolliderStandaloneBBBheadless && xvfb-run ./autostart.sh`
+  * `@reboot cd /home/debian/supercolliderStandaloneBBBheadless && xvfb-run ./autostart.sh`
 
 Then edit the autostart script to load whichever file. By default it will load `mycode.scd`.
 
