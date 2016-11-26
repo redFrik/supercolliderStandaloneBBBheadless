@@ -20,6 +20,29 @@ NOTE: also build jackd2 from git source and do not install it with apt-get (see 
 
 Now this directory should contain what is needed to run sc standalone (if started as in the README.md). Copy it to another machine with the same system and try.
 
+sc3-plugins
+--
+
+How to build and include sc3-plugins...
+
+* `git clone --recursive https://github.com/supercollider/sc3-plugins.git --depth 1`
+* `cd sc3-plugins`
+* `mkdir build && cd build`
+* `export CC=/usr/bin/gcc-4.8`
+* `export CXX=/usr/bin/g++-4.8`
+* `cmake -L -DCMAKE_BUILD_TYPE="Release" -DCMAKE_C_FLAGS="-mfloat-abi=hard -mfpu=neon" -DCMAKE_CXX_FLAGS="-mfloat-abi=hard -mfpu=neon" -DSC_PATH=../../supercollider/ -DCMAKE_INSTALL_PREFIX=~/supercolliderStandaloneBBBheadless/share/system/Extensions/SC3plugins ..`
+* `make`
+* `sudo make install`
+* `cd ~/supercolliderStandaloneBBBheadless/share/system/Extensions/`
+* `sudo chown -R debian SC3plugins`
+* `sudo chgrp -R debian SC3plugins`
+* `mkdir SC3plugins/bin`
+* `mv SC3plugins/lib/SuperCollider/plugins/*.so SC3plugins/bin/`
+* `mv SC3plugins/share/SuperCollider/Extensions/SC3plugins/* SC3plugins/`
+* `rm -rf SC3plugins/lib`
+* `rm -rf SC3plugins/share`
+* `rm -rf SC3plugins/local`
+
 publish
 --
 

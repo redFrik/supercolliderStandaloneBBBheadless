@@ -1,9 +1,9 @@
 # supercolliderStandaloneBBBheadless
 Standalone SuperCollider for BeagleBone Black Debian Jessie.
 
-This is the audio synthesis program [SuperCollider](http://github.com/supercollider/supercollider) (3.8.0, commit 0947edd, 5nov2016) compiled for beaglebone black.
+This is the audio synthesis program [SuperCollider](http://github.com/supercollider/supercollider) (3.8.0, commit 0947edd, 5nov2016) + [sc3-plugins](https://github.com/supercollider/sc3-plugins) (master, commit f1200cd, 8nov2016) compiled for beaglebone black.
 
-It was built using [this guide](http://supercollider.github.io/development/building-beagleboneblack) on a **BeagleBone Black** under bone-debian-8.6-iot-armhf-2016-11-06-4gb.img (Jessie). It will also run under the older Wheezy.
+It was built using [this guide](http://supercollider.github.io/development/building-beagleboneblack) on a **BeagleBone Black** under [bone-debian-8.6-iot-armhf-2016-11-06-4gb.img](http://beagleboard.org/latest-images) (Jessie). It will also run under the older Wheezy.
 
 The standalone structure is loosely based on [Miguel Negrão's template](https://github.com/miguel-negrao/scStandalone). This standalone is self-contained and all files are in one directory.
 
