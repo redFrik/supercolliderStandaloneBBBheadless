@@ -1,20 +1,22 @@
 # supercolliderStandaloneBBBheadless
-Standalone SuperCollider for BeagleBone Black Debian Jessie.
+Standalone SuperCollider for BeagleBone Black Debian Stretch.
 
-This is the audio synthesis program [SuperCollider](http://github.com/supercollider/supercollider) (3.8.0, commit 0947edd, 5nov2016) + [sc3-plugins](https://github.com/supercollider/sc3-plugins) (master, commit f1200cd, 8nov2016) compiled for beaglebone black.
+This is the audio synthesis program [SuperCollider](http://github.com/supercollider/supercollider) (3.9.0, commit 8567e7e, 16jan2018) + [sc3-plugins](https://github.com/supercollider/sc3-plugins) (master, commit aa606ed, 5nov2017) compiled for beaglebone black.
 
-It was built using [this guide](http://supercollider.github.io/development/building-beagleboneblack) on a **BeagleBone Black** under [bone-debian-8.6-iot-armhf-2016-11-06-4gb.img](http://beagleboard.org/latest-images) (Jessie).
+It was built using [this guide](http://supercollider.github.io/development/building-beagleboneblack) on a **BeagleBone Black** under [bone-debian-9.3-console-armhf-2018-01-14-1gb.img](https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Stretch_Snapshot_console) (Stretch).
 
 The standalone structure is loosely based on [Miguel Negrão's template](https://github.com/miguel-negrao/scStandalone). This standalone is self-contained and all files are in one directory.
-
-NOTE: this standalone does not include the full SuperCollider IDE. For the IDE use [this](https://github.com/redFrik/supercolliderStandaloneBBB) repository.
 
 installation
 --
 
+_(this assumes you have done all the usual initialisation... burned the disk image, booted, changed password, optionally enabled ssh)_
+
 open the terminal on the BBB and type...
 
 * `sudo apt-get update`
+* `sudo apt-get upgrade`
+* `sudo apt-get dist-upgrade`
 * `sudo apt-get install libcwiid1 libfftw3-bin libavahi-client3`
 * `git clone git://github.com/redFrik/supercolliderStandaloneBBBheadless --depth 1`
 
