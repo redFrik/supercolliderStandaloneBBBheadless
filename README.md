@@ -3,26 +3,24 @@ Standalone SuperCollider for BeagleBone Black Debian Stretch.
 
 This is the audio synthesis program [SuperCollider](http://github.com/supercollider/supercollider) (3.9.0, commit 8567e7e, 16jan2018) + [sc3-plugins](https://github.com/supercollider/sc3-plugins) (master, commit aa606ed, 5nov2017) compiled for beaglebone black.
 
-It was built using [this guide](http://supercollider.github.io/development/building-beagleboneblack) on a **BeagleBone Black** under [bone-debian-9.3-console-armhf-2018-01-14-1gb.img](https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Stretch_Snapshot_console) (Stretch).
+It was built using [this guide](http://supercollider.github.io/development/building-beagleboneblack) on a **BeagleBone Black** under [bone-debian-9.3-console-armhf-2018-01-14-1gb.img](https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Stretch_Snapshot_console) (Stretch). It also works on the **PocketBeagle** and likely the other beagleboard models.
 
 The standalone structure is loosely based on [Miguel Negrão's template](https://github.com/miguel-negrao/scStandalone). This standalone is self-contained and all files are in one directory.
 
 installation
 --
 
-_(this assumes you have done all the usual initialisation... burned the disk image, booted, changed password, optionally enabled ssh)_
+_(this assumes you have done all the usual initialisation... burned the disk image, booted, logged in via ssh or monitor, changed password)_
 
-open the terminal on the BBB and type...
+in a BBB terminal window type...
 
 * `sudo apt-get update`
-* `sudo apt-get upgrade`
-* `sudo apt-get dist-upgrade`
-* `sudo apt-get install libcwiid1 libfftw3-bin libavahi-client3`
+* `sudo apt-get install git libx11-dev libcwiid1 libfftw3-bin libavahi-client3`
 * `git clone git://github.com/redFrik/supercolliderStandaloneBBBheadless --depth 1`
 
 and then build and install jack2...
 
-* `sudo apt-get install libasound2-dev libsamplerate0-dev libsndfile1-dev libreadline-dev`
+* `sudo apt-get install build-essential python libasound2-dev libsamplerate0-dev libsndfile1-dev libreadline-dev`
 * `git clone git://github.com/jackaudio/jack2.git --depth 1`
 * `cd jack2`
 * `./waf configure --alsa`
@@ -34,7 +32,8 @@ and then build and install jack2...
 * `sudo nano /etc/security/limits.conf` #and add the following two lines at the end
   * `@audio - memlock 256000`
   * `@audio - rtprio 75`
-* `sudo nano /etc/ssh/sshd_config` #at the bottom change to UsePAM yes
+* `nano ~/.jackdrc` #and add the following (use -dhw:1 for usb soundcard)
+* `/usr/local/bin/jackd -P75 -dalsa -dhw:1 -r44100 -p1024 -n3`
 * `sudo reboot`
 
 startup
@@ -42,7 +41,6 @@ startup
 
 Start by opening a terminal window (or log in via ssh) and type...
 
-* `jackd -P75 -dalsa -dhw:1 -p1024 -n3 -s -r44100 &` #edit -dhw to match your audio output. 0 is usually hdmi, and 1 the usb soundcard
 * `cd supercolliderStandaloneBBBheadless`
 * `./sclang -a -l sclang.yaml`
 
