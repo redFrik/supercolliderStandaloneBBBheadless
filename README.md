@@ -1,9 +1,9 @@
 # supercolliderStandaloneBBBheadless
 Standalone SuperCollider for BeagleBone Black Debian Stretch.
 
-This is the audio synthesis program [SuperCollider](http://github.com/supercollider/supercollider) (3.9.1, commit f15598c, 9feb2018) + [sc3-plugins](https://github.com/supercollider/sc3-plugins) (master, commit 9307b41, 2feb2018) compiled for beaglebone black.
+This is the audio synthesis program [SuperCollider](http://github.com/supercollider/supercollider) (3.9.2, commit 6aba4ce, 3apr2018) + [sc3-plugins](https://github.com/supercollider/sc3-plugins) (master, commit 9307b41, 2feb2018) compiled for beaglebone black.
 
-It was built using [this guide](http://supercollider.github.io/development/building-beagleboneblack) on a **BeagleBone Black** under [bone-debian-9.3-console-armhf-2018-02-18-1gb.img](https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Stretch_Snapshot_console) (Stretch). It also works on the **PocketBeagle** and likely the other beagleboard models.
+It was built using [this guide](http://supercollider.github.io/development/building-beagleboneblack) on a **BeagleBone Black** under [bone-debian-9.4-console-armhf-2018-03-25-1gb.img](https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Stretch_Snapshot_console) (Stretch). It also works on the **PocketBeagle** and likely the other beagleboard models.
 
 The standalone structure is loosely based on [Miguel Negrão's template](https://github.com/miguel-negrao/scStandalone). This standalone is self-contained and all files are in one directory.
 
