@@ -10,7 +10,7 @@ The standalone structure is loosely based on [Miguel Negrão's template](https:/
 installation
 --
 
-_(this assumes you have done all the usual initialisation... burned the disk image, booted, logged in via ssh or monitor, changed password)_
+_(this assumes you have done all the usual initialisation... burned the disk image, booted, logged in via ssh or monitor, changed password, expanded the filesystem)_
 
 in a BBB terminal window type...
 
@@ -42,9 +42,9 @@ startup
 Start by opening a terminal window (or log in via ssh) and type...
 
 * `cd supercolliderStandaloneBBBheadless`
-* `./sclang -a -l sclang.yaml`
+* `./sclang -a -l ~/supercolliderStandaloneBBBheadless/sclang.yaml`
 
-NOTE: one can also specify a .scd file to load when starting sclang like this: `./sclang -a -l sclang.yaml mycode.scd`
+NOTE: one can also specify a .scd file to load when starting sclang like this: `./sclang -a -l ~/supercolliderStandaloneBBBheadless/sclang.yaml mycode.scd`
 
 autostart
 --
