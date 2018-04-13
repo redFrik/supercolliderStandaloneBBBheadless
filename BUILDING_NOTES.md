@@ -25,11 +25,11 @@ My own additional notes for this git repository...
 * note which debian image was used in README.md
 * copy the files over to laptop...
   * `cd supercolliderStandaloneBBBheadless`
-  * `scp debian@beaglebone.local:supercolliderStandaloneBBBheadless/sc* .`
+  * `scp debian@beaglebone:supercolliderStandaloneBBBheadless/sc* .`
   * `rm -rf plugins`
-  * `scp -r debian@beaglebone.local:supercolliderStandaloneBBBheadless/plugins .`
+  * `scp -r debian@beaglebone:supercolliderStandaloneBBBheadless/plugins .`
   * `rm -rf share`
-  * `scp -r debian@beaglebone.local:supercolliderStandaloneBBBheadless/share .`
+  * `scp -r debian@beaglebone:supercolliderStandaloneBBBheadless/share .`
   * and possibly the yaml file as well if something changed
 * git commit and sync
 
