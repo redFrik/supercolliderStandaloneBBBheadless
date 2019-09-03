@@ -1,11 +1,11 @@
 # supercolliderStandaloneBBBheadless
-Standalone SuperCollider for BeagleBone Black Debian Stretch.
+Standalone for BeagleBone Black with Debian.
 
-This is the audio synthesis program [SuperCollider](http://github.com/supercollider/supercollider) (3.9.3, commit f61c21d, 6apr2018) + [sc3-plugins](https://github.com/supercollider/sc3-plugins) (master, commit 9307b41, 2feb2018) compiled for beaglebone black.
+This is the audio synthesis program [SuperCollider](https://github.com/supercollider/supercollider) version 3.10.3 (branch 3.10, commit 39ed52c, 30aug2019) + [sc3-plugins](https://github.com/supercollider/sc3-plugins) (branch 3.10, commit 6d69ae9, 5mar2019) compiled for BeagleBone Black.
 
-It was built using [this guide](http://supercollider.github.io/development/building-beagleboneblack) on a **BeagleBone Black** under [bone-debian-9.4-console-armhf-2018-04-08-1gb.img](https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Stretch_Snapshot_console) (Stretch). It also works on the **PocketBeagle** and likely the other beagleboard models.
+The standalone was built using [this guide](https://supercollider.github.io/development/building-beagleboneblack) and tested to run under [Debian 9.5 2018-10-07 4GB SD IoT](http://beagleboard.org/latest-images), [bone-debian-9.9-console-armhf-2019-08-03-1gb.img](https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Debian_Stretch_Console_Snapshot), [bone-debian-10.0-console-armhf-2019-08-25-1gb.img](https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Debian_Buster_Console_Snapshot). It also works on the **PocketBeagle** and likely the other beagleboard models.
 
-The standalone structure is loosely based on [Miguel Negrão's template](https://github.com/miguel-negrao/scStandalone). This standalone is self-contained and all files are in one directory.
+This standalone is self-contained and all files are in one directory.
 
 installation
 --
@@ -15,7 +15,7 @@ _(this assumes you have done all the usual initialisation... burned the disk ima
 in a BBB terminal window type...
 
 * `sudo apt-get update`
-* `sudo apt-get install git libx11-dev libcwiid1 libfftw3-bin libavahi-client3`
+* `sudo apt-get install git libfftw3-bin libavahi-client3`
 * `git clone git://github.com/redFrik/supercolliderStandaloneBBBheadless --depth 1`
 
 and then build and install jack2...
@@ -33,7 +33,7 @@ and then build and install jack2...
   * `@audio - memlock 256000`
   * `@audio - rtprio 75`
 * `nano ~/.jackdrc` #and add the following (use -dhw:1 for usb soundcard)
-* `/usr/local/bin/jackd -P75 -dalsa -dhw:1 -r44100 -p1024 -n3`
+  * `/usr/local/bin/jackd -P75 -dalsa -dhw:1 -r44100 -p1024 -n3`
 * `sudo reboot`
 
 startup
@@ -50,7 +50,7 @@ autostart
 --
 
 * `crontab -e` #and add the following line to the end
-* `@reboot cd /home/debian/supercolliderStandaloneBBBheadless && ./autostart.sh`
+  * `@reboot cd /home/debian/supercolliderStandaloneBBBheadless && ./autostart.sh`
 * `sudo reboot` #and supercollider should automatically start after a while and play some beating sine tones.
 
 Then edit the autostart script to load whichever file. By default it will load `mycode.scd`.
@@ -60,10 +60,7 @@ cpu speed
 
 to avoid audio dropouts on the BBB make sure you are running at 1GHz. The following command will change the governor from *ondemand* to *performance*.
 
+* `sudo apt-get install cpufrequtils`
 * `sudo cpufreq-set -g performance`
-
-and to make the change permanent run...
-
-* `echo 'GOVERNOR="performance"' | sudo tee /etc/default/cpufrequtils`
 
 also power the BBB from barrel jack or gpio pins - the mini usb port will cap the cpu at 300MHz.

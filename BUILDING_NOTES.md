@@ -9,8 +9,10 @@ First build and install SuperCollider and sc3-plugins on a BBB following the ins
 * `cp -r /usr/local/share/SuperCollider/* share/system` #copies help, classes, examples etc
 * `mkdir -p share/system/Extensions/SystemOverwrites`
 * `curl -o share/system/Extensions/SystemOverwrites/extLinuxPlatform.sc https://raw.githubusercontent.com/redFrik/supercolliderStandaloneBBBheadless/master/share/system/Extensions/SystemOverwrites/extLinuxPlatform.sc`
+* `curl -o share/system/Extensions/SystemOverwrites/extPlatform.sc https://raw.githubusercontent.com/redFrik/supercolliderStandaloneBBBheadless/master/share/system/Extensions/SystemOverwrites/extPlatform.sc`
 * `mkdir share/user`
 * `curl -o share/user/archive.sctxar https://raw.githubusercontent.com/redFrik/supercolliderStandaloneBBBheadless/master/share/user/archive.sctxar`
+* `curl -o share/user/startup.scd https://raw.githubusercontent.com/redFrik/supercolliderStandaloneBBBheadless/master/share/user/startup.scd`
 * `curl -o sclang.yaml https://raw.githubusercontent.com/redFrik/supercolliderStandaloneBBBheadless/master/sclang.yaml`
 * `curl -o autostart.sh https://raw.githubusercontent.com/redFrik/supercolliderStandaloneBBBheadless/master/autostart.sh`
 * `curl -o mycode.scd https://raw.githubusercontent.com/redFrik/supercolliderStandaloneBBBheadless/master/mycode.scd`
@@ -31,5 +33,6 @@ My own additional notes for this git repository...
   * `rm -rf share`
   * `scp -r debian@beaglebone:supercolliderStandaloneBBBheadless/share .`
   * and possibly the yaml file as well if something changed
+* make sure there is a binary release for previous version
 * git commit and sync
 
