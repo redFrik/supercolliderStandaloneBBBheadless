@@ -1,9 +1,9 @@
 # supercolliderStandaloneBBBheadless
 Standalone for BeagleBone Black with Debian.
 
-This is the audio synthesis program [SuperCollider](https://github.com/supercollider/supercollider) version 3.10.3 (branch 3.10, commit 39ed52c, 30aug2019) + [sc3-plugins](https://github.com/supercollider/sc3-plugins) (branch 3.10, commit 6d69ae9, 5mar2019) compiled for BeagleBone Black.
+This is the audio synthesis program [SuperCollider](https://github.com/supercollider/supercollider) version 3.10.4 (branch 3.10, commit 6b1e9f4, 16jan2020) + [sc3-plugins](https://github.com/supercollider/sc3-plugins) (branch 3.10, commit 6d69ae9, 5mar2019) compiled for BeagleBone Black.
 
-The standalone was built using [this guide](https://supercollider.github.io/development/building-beagleboneblack) and tested to run under [Debian 9.5 2018-10-07 4GB SD IoT](http://beagleboard.org/latest-images), [bone-debian-9.9-console-armhf-2019-08-03-1gb.img](https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Debian_Stretch_Console_Snapshot), [bone-debian-10.0-console-armhf-2019-08-25-1gb.img](https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Debian_Buster_Console_Snapshot). It also works on the **PocketBeagle** and likely the other beagleboard models.
+The standalone was built using [this guide](https://supercollider.github.io/development/building-beagleboneblack) and tested to run under [Debian 9.9 2019-08-03 4GB SD IoT](http://beagleboard.org/latest-images), [bone-debian-9.11-console-armhf-2019-12-01-1gb.img](https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Debian_Stretch_Console_Snapshot), [bone-debian-10.2-console-armhf-2019-12-16-1gb.img](https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Debian_Buster_Console_Snapshot). It also works on the **PocketBeagle** and likely the other beagleboard models.
 
 This standalone is self-contained and all files are in one directory.
 
@@ -20,7 +20,7 @@ in a BBB terminal window type...
 
 and then build and install jack2...
 
-* `sudo apt-get install build-essential python libasound2-dev libsamplerate0-dev libsndfile1-dev libreadline-dev`
+* `sudo apt-get install build-essential python3 libasound2-dev libsamplerate0-dev libsndfile1-dev libreadline-dev`
 * `git clone git://github.com/jackaudio/jack2.git --depth 1`
 * `cd jack2`
 * `./waf configure --alsa`
@@ -29,11 +29,9 @@ and then build and install jack2...
 * `sudo ldconfig`
 * `cd ..`
 * `rm -rf jack2`
-* `sudo nano /etc/security/limits.conf` #and add the following two lines at the end
-  * `@audio - memlock 256000`
-  * `@audio - rtprio 75`
-* `nano ~/.jackdrc` #and add the following (use -dhw:1 for usb soundcard)
-  * `/usr/local/bin/jackd -P75 -dalsa -dhw:1 -r44100 -p1024 -n3`
+* `sudo sh -c "echo @audio - memlock 256000 >> /etc/security/limits.conf"`
+* `sudo sh -c "echo @audio - rtprio 75 >> /etc/security/limits.conf"`
+* `echo /usr/local/bin/jackd -P75 -p16 -dalsa -dhw:1 -r44100 -p1024 -n3 > ~/.jackdrc` #-dhw:1 is for usb soundcard
 * `sudo reboot`
 
 startup
@@ -42,9 +40,9 @@ startup
 Start by opening a terminal window (or log in via ssh) and type...
 
 * `cd supercolliderStandaloneBBBheadless`
-* `./sclang -a -l ~/supercolliderStandaloneBBBheadless/sclang.yaml`
+* `./sclang -a -l sclang.yaml`
 
-NOTE: one can also specify a .scd file to load when starting sclang like this: `./sclang -a -l ~/supercolliderStandaloneBBBheadless/sclang.yaml mycode.scd`
+NOTE: one can also specify a .scd file to load when starting sclang like this: `./sclang -a -l sclang.yaml mycode.scd`
 
 autostart
 --
