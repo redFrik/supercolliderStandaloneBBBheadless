@@ -40,9 +40,9 @@ startup
 Start by opening a terminal window (or log in via ssh) and type...
 
 * `cd supercolliderStandaloneBBBheadless`
-* `./sclang -a -l sclang.yaml`
+* `./sclang -a -l ~/supercolliderStandaloneBBBheadless/sclang.yaml`
 
-NOTE: one can also specify a .scd file to load when starting sclang like this: `./sclang -a -l sclang.yaml mycode.scd`
+NOTE: one can also specify a .scd file to load when starting sclang like this: `./sclang -a -l ~/supercolliderStandaloneBBBheadless/sclang.yaml mycode.scd`
 
 autostart
 --
