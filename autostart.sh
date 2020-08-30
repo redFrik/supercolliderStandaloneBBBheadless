@@ -1,4 +1,4 @@
 #!/bin/bash
 PATH=$PATH:/usr/local/bin
-sleep 10
+sleep 20
 ./sclang -a -l sclang.yaml mycode.scd

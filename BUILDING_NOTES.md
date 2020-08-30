@@ -1,6 +1,20 @@
 Instructions for building these binaries and set up a similar standalone repository...
 
-First build and install SuperCollider and sc3-plugins on a BBB following the instructions [here](http://supercollider.github.io/development/building-beagleboneblack). One can also use an existing sc install assuming all the files are in their default directories.
+First build and install SuperCollider and sc3-plugins on a BBB following the [official build instructions](https://github.com/supercollider/supercollider/blob/develop/README_BEAGLEBONE_BLACK.md). One can also use an existing sc install assuming all the files are in their default directories.
+
+(  
+sc3-plugins are built and installed like this...
+
+```
+git clone --recursive https://github.com/supercollider/sc3-plugins.git
+cd sc3-plugins
+#git checkout 3.10  #optional select version
+mkdir build && cd build
+cmake -DCMAKE_BUILD_TYPE="Release" -DSUPERNOVA=OFF -DNATIVE=ON -DSC_PATH=../../supercollider/ ..
+make
+sudo make install
+```
+)
 
 * `mkdir supercolliderStandaloneBBBheadless && cd supercolliderStandaloneBBBheadless`
 * `cp /usr/local/bin/sclang /usr/local/bin/scsynth .` #this copies sclang and scsynth

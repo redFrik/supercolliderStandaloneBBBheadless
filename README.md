@@ -1,21 +1,21 @@
 # supercolliderStandaloneBBBheadless
 Standalone for BeagleBone Black with Debian.
 
-This is the audio synthesis program [SuperCollider](https://github.com/supercollider/supercollider) version 3.10.4 (branch 3.10, commit 6b1e9f4, 16jan2020) + [sc3-plugins](https://github.com/supercollider/sc3-plugins) (branch 3.10, commit 6d69ae9, 5mar2019) compiled for BeagleBone Black.
+This is the audio synthesis program [SuperCollider](https://github.com/supercollider/supercollider) version 3.11.1 (branch 3.11, commit 49b3094, 25aug2020) + [sc3-plugins](https://github.com/supercollider/sc3-plugins) (branch master, commit f3d5635, 24jul2020) compiled for BeagleBone Black.
 
-The standalone was built using [this guide](https://supercollider.github.io/development/building-beagleboneblack) and tested to run under [Debian 9.9 2019-08-03 4GB SD IoT](http://beagleboard.org/latest-images), [bone-debian-9.11-console-armhf-2019-12-01-1gb.img](https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Debian_Stretch_Console_Snapshot), [bone-debian-10.2-console-armhf-2019-12-16-1gb.img](https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Debian_Buster_Console_Snapshot). It also works on the **PocketBeagle** and likely the other beagleboard models.
+The standalone was built using [this guide](https://github.com/supercollider/supercollider/blob/develop/README_BEAGLEBONE_BLACK.md) and tested to run under [AM3358 Debian 10.3 2020-04-06 4GB SD IoT](https://beagleboard.org/latest-images), [bone-debian-9.12-console-armhf-2020-05-02-1gb.img](https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Debian_Stretch_Console_Snapshot), [bone-debian-10.4-console-armhf-2020-05-18-1gb.img](https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Debian_Buster_Console_Snapshot). It also works on the **PocketBeagle** and likely the other beagleboard models.
 
 This standalone is self-contained and all files are in one directory.
 
 installation
 --
 
-_(this assumes you have done all the usual initialisation... burned the disk image, booted, logged in via ssh or monitor, changed password, expanded the filesystem)_
+_(this assumes you have done all the usual initialisation... burned the disk image, booted, logged in via ssh or monitor, changed password, expanded the filesystem (```sudo /opt/scripts/tools/grow_partition.sh```))_
 
 in a BBB terminal window type...
 
 * `sudo apt-get update`
-* `sudo apt-get install git libfftw3-bin libavahi-client3`
+* `sudo apt-get install git libfftw3-bin libavahi-client3 libncurses5`
 * `git clone git://github.com/redFrik/supercolliderStandaloneBBBheadless --depth 1`
 
 and then build and install jack2...
