@@ -1,7 +1,7 @@
 # supercolliderStandaloneBBBheadless
 Standalone for BeagleBone Black with Debian.
 
-This is the audio synthesis program [SuperCollider](https://github.com/supercollider/supercollider) version 3.11.2 (branch 3.11, commit 6cce82b, 13nov2020) + [sc3-plugins](https://github.com/supercollider/sc3-plugins) (branch master, commit 209cf4f, 17nov2020) compiled for BeagleBone Black.
+This is the audio synthesis program [SuperCollider](https://github.com/supercollider/supercollider) version 3.12.0 (branch main, commit 028ff1b, 03aug2021) + [sc3-plugins](https://github.com/supercollider/sc3-plugins) (branch main, commit dca5c0b, 06aug2021) compiled for BeagleBone Black.
 
 The standalone was built using [this guide](https://github.com/supercollider/supercollider/blob/develop/README_BEAGLEBONE_BLACK.md) and tested to run under [AM3358 Debian 10.3 2020-04-06 4GB SD IoT](https://beagleboard.org/latest-images), [bone-debian-10.4-console-armhf-2020-05-18-1gb.img](https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Debian_Buster_Console_Snapshot). It also works on the **PocketBeagle** and likely the other beagleboard models.
 
