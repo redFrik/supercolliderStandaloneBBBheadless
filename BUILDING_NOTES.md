@@ -41,7 +41,7 @@ My own additional notes for this git repository...
 * note which debian image was used in README.md
 * copy the files over to laptop...
   * `cd supercolliderStandaloneBBBheadless`
-  * `scp debian@beaglebone:supercolliderStandaloneBBBheadless/sc* .`
+  * `scp debian@beaglebone:supercolliderStandaloneBBBheadless/sc\* .`
   * `rm -rf plugins`
   * `scp -r debian@beaglebone:supercolliderStandaloneBBBheadless/plugins .`
   * `rm -rf share`

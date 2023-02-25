@@ -1,9 +1,9 @@
 # supercolliderStandaloneBBBheadless
 Standalone for BeagleBone Black with Debian.
 
-This is the audio synthesis program [SuperCollider](https://github.com/supercollider/supercollider) version 3.12.0 (branch main, commit 028ff1b, 03aug2021) + [sc3-plugins](https://github.com/supercollider/sc3-plugins) (branch main, commit dca5c0b, 06aug2021) compiled for BeagleBone Black.
+This is the audio synthesis program [SuperCollider](https://github.com/supercollider/supercollider) version 3.13.0 (branch main, commit 3188503, 20feb2023) + [sc3-plugins](https://github.com/supercollider/sc3-plugins) (branch main, commit ab7f94e, 24feb2023) compiled for BeagleBone Black.
 
-The standalone was built using [this guide](https://github.com/supercollider/supercollider/blob/develop/README_BEAGLEBONE_BLACK.md) and tested to run under [AM3358 Debian 10.3 2020-04-06 4GB SD IoT](https://beagleboard.org/latest-images), [bone-debian-10.4-console-armhf-2020-05-18-1gb.img](https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Debian_Buster_Console_Snapshot). It also works on the **PocketBeagle** and likely the other beagleboard models.
+The standalone was built using [this guide](https://github.com/supercollider/supercollider/blob/develop/README_BEAGLEBONE_BLACK.md) and tested to run under [AM3358 Debian 10.3 2020-04-06 4GB SD IoT](https://beagleboard.org/latest-images), [bone-debian-10.3-console-armhf-2020-04-06-1gb](https://beagleboard.org/latest-images) and [bone-debian-10.13-console-armhf-2023-02-05-1gb](https://elinux.org/Beagleboard:Latest-images-testing#Debian_10_.28Buster.29_Console). It also works on the **PocketBeagle** and likely the other beagleboard models.
 
 This standalone is self-contained and all files are in one directory.
 
@@ -16,12 +16,12 @@ In a BBB terminal window type...
 
 * `sudo apt-get update`
 * `sudo apt-get install git libfftw3-bin libavahi-client3`
-* `git clone git://github.com/redFrik/supercolliderStandaloneBBBheadless --depth 1`
+* `git clone https://github.com/redFrik/supercolliderStandaloneBBBheadless --depth 1`
 
 and then build and install jack2...
 
-* `sudo apt-get install build-essential python3 libasound2-dev libsamplerate0-dev libsndfile1-dev libreadline-dev`
-* `git clone git://github.com/jackaudio/jack2.git --depth 1`
+* `sudo apt-get install build-essential libasound2-dev libsamplerate0-dev libsndfile1-dev`
+* `git clone --branch master --single-branch https://github.com/jackaudio/jack2.git`
 * `cd jack2`
 * `./waf configure --alsa`
 * `./waf build`
